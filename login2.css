@@ -3,6 +3,9 @@ body {
   padding-bottom: 40px;
   background-color: #eee;
 }
+h4 {
+  text-align: center;
+}
 
 .form-signin {
   max-width: 350px;

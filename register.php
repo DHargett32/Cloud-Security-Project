@@ -1,146 +1,86 @@
-<html>
-<head>
-	<title>Register</title>
-	<style type="text/css">
-		.error {color:#FF0000;}
-		.center {text-align: center;}
-		.right{text-align: right;}
-		.left{text-align: left;}
-		#form_register{
-			left: 50%;
-    		margin-left: -15%;
-    		position: absolute;
-		}
-	</style>
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login2</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- PHP code for input validation -->
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Custom styles for this template, given with example on bootstrap website -->
+        <link href="login2.css" rel="stylesheet">
+
+    </head>
+    <body>
+        <div class="container">
+
+            <form class="form-signin">
+                <h1 class="form-signin-heading">New User Registration</h1>
+                <label for="inputFirstName" class="sr-only">First Name:</label>
+                <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" autocomplete="off" required>
+
+                <label for="inputLastName" class="sr-only">Last Name:</label>
+                <input type="text" id="inputlastName" class="form-control" placeholder="Last Name" autocomplete="off" required> 
+
+                <label for="inputEmail" class="sr-only">Email:</label>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Email" autocomplete="off" required>
+
+                <label for="inputCompanyID" class="sr-only">Company ID:</label>
+                <input type="text" id="inputCompanyID" class="form-control" placeholder="Company ID" autocomplete="off" required>
+
+                <label for="inputRegistrationCode" class="sr-only">Registration Code:</label>
+                <input type="text" id="inputRegistrationCode" class="form-control" placeholder="Registration Code" autocomplete="off" required>
+
+                <label for="inputUsername" class="sr-only">Username:</label>
+                <input type="text" id="inputUsername" class="form-control" placeholder="Username" autocomplete="off" required>
+
+                <label for="inputUsername" class="sr-only">Password:</label>
+                <input type="password" id="inputUsername" class="form-control" placeholder="Password" autocomplete="off" required>
+
+                <label for="inputConfirmPassword" class="sr-only">Confirm Password:</label>
+                <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" autocomplete="off" required>
+
+                <h4>   Security Question #1</h4>
+                <select class="form-control" data-toggle="tooltip">
+                    <option value="sq1">What is the name of your hometown?</option>
+                    <option value="sq2">What is the name of your first pet?</option>
+                    <option value="sq3">What is your mother's maiden name?</option>
+                    <option value="sq4">Who is your best friend?</option>
+                </select>
+                <input type="text" id="inputSecurityQuestionAnswer1" class="form-control" placeholder="Answer" autocomplete="off" required>
 
 
 
+                <h4>Security Question #2</h4>
+                <select class="form-control">
+                    <option value="sq5">Where was your favorite vacation?</option>
+                    <option value="sq6">What is your favorite food?</option>
+                    <option value="sq7">Who is your favorite sports team?</option>
+                    <option value="sq8">What was your high school mascot?</option>
+                </select>
+                <input type="text" id="inputSecurityQuestionAnswer2" class="form-control" placeholder="Answer" autocomplete="off" required>
+
+
+                <h4>Security Question #3</h4>
+                <select class="form-control">
+                    <option value="sq9">Who is the person you most admire?</option>
+                    <option value="sq10">What is your favorite holiday?</option>
+                    <option value="sq11">What is your favorite game?</option>
+                    <option value="sq12">What is your favorite color?</option>
+                </select>
+                <input type="text" id="inputSecurityQuestionAnswer3" class="form-control" placeholder="Answer" autocomplete="off" required>
+
+
+                <br/>
 
 
 
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            </form>
 
-
-
-
-
-	<!-- HTML code -->
-			<form id="form_register" action="process-player1.php" method="post">
-				<h1>New User Registration</h1>
-		<legend class="error">* required field</legend>
-		<br/>
-		<br/>
-				<table>
-					<tr>
-						<td>First Name:</td><td><input type="textbox" name="firstName"></td><td><p class="error">*</p></td>
-					</tr>
-					<tr>
-						<td>Last Name:</td><td><input type="textbox" name="lastName"></td><td><p class="error">*</p></td>
-					</tr>
-					<tr>
-						<td>Email:</td><td><input type="textbox" name="email"></td><td><p class="error">*</p></td>
-					</tr>
-					<tr>
-						<td>Company ID:</td><td><input type="textbox" name="companyID"></td><td><p class="error">*</p></td>
-					</tr>
-					<tr>
-						<td>Registration Code:</td><td><input type="textbox" name="registrationCode"></td><td><p class="error">*</p></td>
-					</tr>
-					<tr>
-						<td>Username:</td><td><input type="textbox" name="username"></td><td><p class="error">*</p></td>
-					</tr>
-					<tr>
-						<td>Password:</td><td><input type="password" name="password"></td><td><p class="error">*</p></td>
-					<tr>
-						<td>Re-enter Password:</td><td><input type="password" name="confirmPassword"></td><td><p class="error">*</p></td>
-					</tr>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<!-- Security questions -->
-					<tr>
-						<td colspan="2" class="center">Security Question #1</td>
-					</tr>
-					<tr>
-						<td colspan="2" class="center">
-							<select content= "">
-								<option value="sq1">What is the name of your hometown?</option>
-								<option value="sq2">What is the name of your first pet?</option>
-								<option value="sq3">What is your mother's maiden name?</option>
-								<option value="sq4">Who is your best friend?</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td class="center">Answer:</td><td><input type="textbox" name="answer1"></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="center">Security Question #2</td>
-					</tr>
-					<tr>
-						<td colspan="2" class="center">
-							<select content= "">
-								<option value="sq5">Where was your favorite vacation?</option>
-								<option value="sq6">What is your favorite food?</option>
-								<option value="sq7">Who is your favorite sports team?</option>
-								<option value="sq8">What was your high school mascot?</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td class="center">Answer:</td><td><input type="textbox" name="answer2"></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="center">Security Question #3</td>
-					</tr>
-					<tr>
-						<td colspan="2" class="center">
-							<select content= "">
-								<option value="sq9">Who is the person you most admire?</option>
-								<option value="sq10">What is your favorite holiday?</option>
-								<option value="sq11">What is your favorite game?</option>
-								<option value="sq12">What is your favorite color?</option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td class="center">Answer:</td><td><input type="textbox" name="answer3"></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td></td><td></td><td></td>
-					</tr>
-					<tr>
-						<td colspan="3" class="center"><input type="submit" name="" value=Submit></td><td></td><td></td>
-					</tr>
-				</table>
-			</form>
-	</body>
+        </div> <!-- /container -->
+    </body>
 </html>
