@@ -52,7 +52,7 @@
             document.getElementById('randomfield').value = ChangeCaptcha;
         }
         function check() {
-        if(document.getElementById('CaptchaEnter').value == document.getElementById('randomfield').value ) {
+        if(document.getElementById('CaptchaAnswer').value == document.getElementById('randomfield').value ) {
         window.open('https://www.google.co.in','_self'); // change url to next page we need to visit
         }
         else {
