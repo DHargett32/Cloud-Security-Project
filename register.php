@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Login2</title>
+        <title>Register</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,6 +28,9 @@
                 <label for="inputEmail" class="sr-only">Email:</label>
                 <input type="text" id="inputEmail" class="form-control" placeholder="Email" autocomplete="off" required>
 
+                <label for="inputPhone" class="sr-only">Phone:</label>
+                <input type="text" id="inputPhone" class="form-control" placeholder="Phone" autocomplete="off" required>
+                
                 <label for="inputCompanyID" class="sr-only">Company ID:</label>
                 <input type="text" id="inputCompanyID" class="form-control" placeholder="Company ID" autocomplete="off" required>
 
