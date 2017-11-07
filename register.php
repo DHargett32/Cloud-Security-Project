@@ -20,7 +20,7 @@
             });
         </script> -->
         <!-- Custom styles for this template, given with example on bootstrap website -->
-        <link href="login2.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
 
     </head>
     <body>
@@ -49,8 +49,8 @@
                 <label for="inputUsername" class="sr-only">Username:</label>
                 <input type="text" id="inputUsername" class="form-control" placeholder="Username" autocomplete="off" required>
 
-                <label for="inputUsername" class="sr-only">Password:</label>
-                <input type="password" id="inputUsername" class="form-control" placeholder="Password" autocomplete="off" required>
+                <label for="inputPassword" class="sr-only">Password:</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" autocomplete="off" required>
 
                 <label for="inputConfirmPassword" class="sr-only">Confirm Password:</label>
                 <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" autocomplete="off" required>

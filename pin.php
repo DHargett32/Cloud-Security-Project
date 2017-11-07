@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Website - Login</title>
+        <title>Authenticate</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,15 +18,10 @@
         <div class="container">
 
             <form class="form-signin">
-                <h1 class="form-signin-heading">Login or Sign Up</h1>
-                <label for="inputUsername" class="sr-only">Username:</label>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required>
-
-                <label for="inputPassword" class="sr-only">Password:</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-                <!-- link to register page -->
-                <a href="#"><h4>New User? Click Here to Sign Up!</h4></a>
+                <h1 class="form-signin-heading">PIN Verification</h1>
+                <label for="inputPIN" class="sr-only">PIN:</label>
+                <input type="number" id="inputPIN" class="form-control" placeholder="#####" required>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
             </form>
 
         </div> <!-- /container -->

@@ -32,7 +32,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!-- Custom styles for this template, given with example on bootstrap website -->
-        <link href="login2.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
     </head>
     <body onLoad="ChangeCaptcha()">
 
