@@ -21,6 +21,7 @@
                 <h1 class="form-signin-heading">PIN Verification</h1>
                 <label for="inputPIN" class="sr-only">PIN:</label>
                 <input type="number" id="inputPIN" class="form-control" placeholder="#####" required>
+				<br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
             </form>
 

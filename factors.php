@@ -65,7 +65,7 @@
                 <div class="checkbox disabled">
                     <label><input type="checkbox" value="" disabled><h4>Biometrics</h4></label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Save and Continue</button>
             </form>
 
         </div> <!-- /container -->
