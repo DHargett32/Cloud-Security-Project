@@ -10,6 +10,15 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+        <!-- Add jQuery -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="\winmarkltd-BootstrapFormHelpers-2.3.0-17-gd4201db\winmarkltd-BootstrapFormHelpers-d4201db\js\bootstrap-formhelpers-phone.js"></script>
+
+        <!--<script>
+            $(document).ready(function(){
+                alert("Working!");
+            });
+        </script> -->
         <!-- Custom styles for this template, given with example on bootstrap website -->
         <link href="login2.css" rel="stylesheet">
 
@@ -29,7 +38,7 @@
                 <input type="text" id="inputEmail" class="form-control" placeholder="Email" autocomplete="off" required>
 
                 <label for="inputPhone" class="sr-only">Phone:</label>
-                <input type="text" id="inputPhone" class="form-control" placeholder="Phone" autocomplete="off" required>
+                <input type="text" class="form-control bfh-phone" data-toggle="tooltip" data-placement="top" title="Phone" data-format=" (ddd) ddd-dddd" id="inputPhone"  autocomplete="off" required>
                 
                 <label for="inputCompanyID" class="sr-only">Company ID:</label>
                 <input type="text" id="inputCompanyID" class="form-control" placeholder="Company ID" autocomplete="off" required>
