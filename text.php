@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Website - Login</title>
+        <title>Authenticate</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,9 +19,9 @@
         <div class="container">
 
             <form class="form-signin">
-                <h1 class="form-signin-heading">Email Authentication</h1>
+                <h1 class="form-signin-heading">Text Authentication</h1>
                 <label for="inputPassword" class="sr-only">Password:</label>
-				The Email address goes here!</a>
+				The Mobile Number goes here!</a>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Submit Your Code" required> 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
                 <!-- link to register page -->
