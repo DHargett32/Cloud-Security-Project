@@ -14,6 +14,9 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="\winmarkltd-BootstrapFormHelpers-2.3.0-17-gd4201db\winmarkltd-BootstrapFormHelpers-d4201db\js\bootstrap-formhelpers-phone.js"></script>
 
+        
+        
+
         <!--<script>
             $(document).ready(function(){
                 alert("Working!");
@@ -24,6 +27,7 @@
 
     </head>
     <body>
+        <div id="name-data"></div>
         <div class="container">
 
             <form class="form-signin">
@@ -32,7 +36,7 @@
                 <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" autocomplete="off" required>
 
                 <label for="inputLastName" class="sr-only">Last Name:</label>
-                <input type="text" id="inputlastName" class="form-control" placeholder="Last Name" autocomplete="off" required> 
+                <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" autocomplete="off" required> 
 
                 <label for="inputEmail" class="sr-only">Email:</label>
                 <input type="text" id="inputEmail" class="form-control" placeholder="Email" autocomplete="off" required>
@@ -59,32 +63,32 @@
                 <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Confirm Password" autocomplete="off" required>
 
                 <h4>   Security Question #1</h4>
-                <select class="form-control" data-toggle="tooltip">
-                    <option value="sq1">What is the name of your hometown?</option>
-                    <option value="sq2">What is the name of your first pet?</option>
-                    <option value="sq3">What is your mother's maiden name?</option>
-                    <option value="sq4">Who is your best friend?</option>
+                <select class="form-control" data-toggle="tooltip" id="sqg1">
+                    <option>What is the name of your hometown?</option>
+                    <option>What is the name of your first pet?</option>
+                    <option>What is your mother's maiden name?</option>
+                    <option>Who is your best friend?</option>
                 </select>
                 <input type="text" id="inputSecurityQuestionAnswer1" class="form-control" placeholder="Answer" autocomplete="off" required>
 
 
 
                 <h4>Security Question #2</h4>
-                <select class="form-control">
-                    <option value="sq5">Where was your favorite vacation?</option>
-                    <option value="sq6">What is your favorite food?</option>
-                    <option value="sq7">Who is your favorite sports team?</option>
-                    <option value="sq8">What was your high school mascot?</option>
+                <select class="form-control" id="sqg2">
+                    <option>Where was your favorite vacation?</option>
+                    <option>What is your favorite food?</option>
+                    <option>Who is your favorite sports team?</option>
+                    <option>What was your high school mascot?</option>
                 </select>
                 <input type="text" id="inputSecurityQuestionAnswer2" class="form-control" placeholder="Answer" autocomplete="off" required>
 
 
                 <h4>Security Question #3</h4>
-                <select class="form-control">
-                    <option value="sq9">Who is the person you most admire?</option>
-                    <option value="sq10">What is your favorite holiday?</option>
-                    <option value="sq11">What is your favorite game?</option>
-                    <option value="sq12">What is your favorite color?</option>
+                <select class="form-control" id="sqg3">
+                    <option>Who is the person you most admire?</option>
+                    <option>What is your favorite holiday?</option>
+                    <option>What is your favorite game?</option>
+                    <option>What is your favorite color?</option>
                 </select>
                 <input type="text" id="inputSecurityQuestionAnswer3" class="form-control" placeholder="Answer" autocomplete="off" required>
 
@@ -92,8 +96,9 @@
                 <br/>
 
 
-
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+<!--class="btn btn-lg btn-primary btn-block"-->
+                <input type="submit" id="registerUser-submit">Register</input>
+                <script type="text/javascript" src="js/register.js"></script>
             </form>
 
         </div> <!-- /container -->
