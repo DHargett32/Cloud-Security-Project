@@ -40,6 +40,9 @@
                 <label for="inputPhone" class="sr-only">Phone:</label>
                 <input type="text" class="form-control bfh-phone" data-toggle="tooltip" data-placement="top" title="Phone" data-format=" (ddd) ddd-dddd" id="inputPhone"  autocomplete="off" required>
                 
+                <label for="inputPin" class="sr-only">PIN:</label>
+                <input type="text" id="inputPin" class="form-control" placeholder="PIN" autocomplete="off" required>
+
                 <label for="inputCompanyID" class="sr-only">Company ID:</label>
                 <input type="text" id="inputCompanyID" class="form-control" placeholder="Company ID" autocomplete="off" required>
 
