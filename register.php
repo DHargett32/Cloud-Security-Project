@@ -96,8 +96,8 @@
                 <br/>
 
 
-<!--class="btn btn-lg btn-primary btn-block"-->
-                <input type="submit" id="registerUser-submit">Register</input>
+                <!-- JavaScript only seems to work with "input" tag... so we can disguise the input tag as a Bootstrap button with class attribute-->
+                <input type="submit" class="btn btn-lg btn-primary btn-block" id="registerUser-submit" value="Register Now!"></input>
                 <script type="text/javascript" src="js/register.js"></script>
             </form>
 
