@@ -14,6 +14,16 @@
         // Storing session data
         $_SESSION["username"] = $username;
         $_SESSION["companyID"] = $companyID;
+        //[add] num of factors needed to complete
+        //[add] num of factors completed
+        
+        //we have a total of 7 authentication factors
+        //using sessions to create a series of factors they have to solve
+        //string nums 1-7, go through and parse one at a time
+        //say we had 1,3,5,and7
+        //just have one string with 1,3,5,7 (delimited by something)
+        //and as you go through each authentication factor, you just pop the front one off and restore the string
+        //or could use file name or authentication name
         
         
 
