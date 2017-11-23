@@ -15,6 +15,17 @@
 
     </head>
     <body>
+
+        <?php
+        // Starting session (if any session for this person already exists [which it should!!], they are automatically used... else, new session started)
+        session_start();
+
+        // Accessing session data
+        echo 'Hi, ' . $_SESSION["username"];
+        ?>
+
+
+
         <div class="container">
 
             <form class="form-signin">
@@ -70,4 +81,5 @@
 
         </div> <!-- /container -->
     </body>
-</html>
+</html> 
+
