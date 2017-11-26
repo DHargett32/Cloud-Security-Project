@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,13 +14,25 @@
         <link href="style.css" rel="stylesheet">
 
     </head>
-    <body>
+    <body onload="getPhoneNumber()">
         <div class="container">
 
             <form class="form-signin">
                 <h1 class="form-signin-heading">Phone Call Authentication</h1>
-                <label for="inputPassword" class="sr-only">Password:</label>
-				The Mobile Number goes here!</a>
+                <p>A phone call is being placed the the following number:</p>
+                <span style="font-weight:bold"><div id="phoneNumber"></div></span>
+                <script>
+                    function getPhoneNumber(){
+                        $username = "dhargett"; // replace with session variable
+                        $companyID = "1234"; // replace with session variable
+                        
+                        $.post('ajax/callAuth.php', {"username":$username, "companyID":$companyID},function(data){ 
+                            // display the users email address to indicate which email address the code was sent to
+                            $('div#phoneNumber').text(data);	
+                        });
+                    }
+                </script>
+                <br>
                 <input type="password" id="inputPassword" class="form-control" placeholder="Submit Your Code" required> 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
                 <!-- link to register page -->
