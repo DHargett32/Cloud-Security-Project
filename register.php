@@ -14,14 +14,6 @@
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="\winmarkltd-BootstrapFormHelpers-2.3.0-17-gd4201db\winmarkltd-BootstrapFormHelpers-d4201db\js\bootstrap-formhelpers-phone.js"></script>
 
-        
-        
-
-        <!--<script>
-            $(document).ready(function(){
-                alert("Working!");
-            });
-        </script> -->
         <!-- Custom styles for this template, given with example on bootstrap website -->
         <link href="style.css" rel="stylesheet">
 
