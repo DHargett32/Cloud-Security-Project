@@ -18,7 +18,7 @@
         <link href="style.css" rel="stylesheet">
         
     </head>
-    <body>
+    <body onload="getCurrentFactors()">
 
         <div class="container">
 
@@ -70,13 +70,69 @@
                     <label><input id="bio" type="checkbox" value="" disabled><h4>Biometrics (coming soon!)</h4></label>
                 </div>
                 
-                <input type="submit" class="btn btn-lg btn-primary btn-block" id="factors-submit" value="Set As Required Factors"></input>
+                <input type="submit" class="btn btn-lg btn-primary btn-block" id="factors-submit" value="Set Factors"></input>
             </form>
 
         </div> <!-- /container -->
         
         <!-- Associated JavaScript File-->
         <script type="text/javascript" src="js/factors.js"></script>
+        
+        <script type="text/javascript">
+            function getCurrentFactors() {
+                $username = "slavett"; // replace with session variable
+                $companyID = "1234"; // replace with session variable
+
+                $.post('ajax/loadFactors.php', {"username": $username, "companyID": $companyID}, function (data) {
+                    var delimiter = data.indexOf("^");
+                    if(delimiter == "-1"){   //delimiter does not exist, alert normal message
+                       alert(data);
+                    } else {           //delimiter exists, (1)output correct message, and (2) check existing factors
+                       var datalength = data.length;
+
+                       var factorIDs = data.substr(0, delimiter);
+                       var alertData = data.substr(delimiter + 1, datalength);
+                       factorIDs.trim();
+
+                       //split factorIDs string into array of variables
+                       var factorIDArray = factorIDs.split(',');
+                       
+//                       alert(factorIDs);
+//                       alert("length is " + factorIDArray.length);
+//                       alert(factorIDArray[0]);
+//                       alert(factorIDArray[1]);
+                       
+                       //NOTE: In Database, our factorID's are as follows:
+                       //1 - Security Questions
+                       //2 - PIN
+                       //3 - Phone Call
+                       //4 - Puzzles
+                       //5 - Email
+                       //6 - Text Message
+                       //7 - Biometrics
+                       
+                       //check the boxe
+                       for (i = 0; i < factorIDArray.length; i++) { 
+                            var temp = factorIDArray[i];
+                            if(temp === "1"){
+                                $("#scqu").prop("checked", true);
+                            } else if (temp === "2") {
+                                $("#pin").prop("checked", true);
+                            } else if (temp === "3") {
+                                $("#phc").prop("checked", true);
+                            } else if (temp === "4") {
+                                $("#puz").prop("checked", true);
+                            } else if (temp === "5") {
+                                $("#eml").prop("checked", true);
+                            } else if (temp === "6") {
+                                $("#txtm").prop("checked", true);
+                            }
+                        }
+                       alert(alertData);
+                    }
+                });
+            }
+        </script> 
     </body>
 </html> 
 
