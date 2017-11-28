@@ -13,7 +13,7 @@
         <!-- Add jQuery -->
         <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <script type="text/javascript" src="\winmarkltd-BootstrapFormHelpers-2.3.0-17-gd4201db\winmarkltd-BootstrapFormHelpers-d4201db\js\bootstrap-formhelpers-phone.js"></script>
-
+        
         <!-- Custom styles for this template, given with example on bootstrap website -->
         <link href="style.css" rel="stylesheet">
 
@@ -24,11 +24,13 @@
             <form class="form-signin">
                 <h1 class="form-signin-heading">PIN Verification</h1>
                 <label for="inputPIN" class="sr-only">PIN:</label>
-                <input type="number" id="inputPIN" class="form-control" placeholder="#####" required>
-				<br>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                <input type="text" id="inputPIN" class="form-control" placeholder="#####" required>
+		<br>
+                <input class="btn btn-lg btn-primary btn-block" type="submit" id="submitPin">Submit</input>
+                
             </form>
-
+            
         </div> <!-- /container -->
+        <script type="text/javascript" src="js/pin.js"></script>
     </body>
 </html>
