@@ -18,42 +18,55 @@
         <link href="style.css" rel="stylesheet">
         
     </head>
-    <body>
-        <?php
-        // database setup
-        try
-        {
-            $conn = new PDO("sqlsrv:Server=sqlsv-cs667auth.cbpyuvpamt0n.us-east-2.rds.amazonaws.com,1430;Database=sqlauth", "admin", "sqlsv-cs667auth!");
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            /*if($conn)
-            {
-                echo "Connected!";
-            }*/
-        }
-        catch(PDOException $e){
-            echo $e->getMessage();
-        }
-        // connect to database
-
-        // generate number 1-3 to determine which security question to generate
-        $questionToRetrieve = rand(1,3);
-        // run query
-        //$generateSecurityQuestion = $conn->query("SELECT ");
-
-
-        ?>
+    <body onload="generateSecurityQuestion()">
+        
         <div class="container">
 
             <form class="form-signin">
                 <h1 class="form-signin-heading">Security Question</h1>
 
-                <h4>question goes here</h4>
-                <input type="text" id="inputSecurityQuestionAnswer1" class="form-control" placeholder="Answer" autocomplete="off" required>
+                <h4 id='generatedQuestion'>question goes here</h4>
+                
+                <input type="text" id="inputSecurityQuestionAnswer" class="form-control" placeholder="Answer" autocomplete="off" required>
 
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="verifyAnswer()">Submit</button>
             </form>
 
         </div> <!-- /container -->
+        <script>
+            //
+            $username = "dhargett"; // replace with session variable
+            $companyID = "1234"; // replace with session variable
+            $securityQuestionGroupID = Math.floor((Math.random() * 3) + 1);
+
+            function generateSecurityQuestion(){
+
+                $.post('ajax/generateSecurityQuestion.php', {"username":$username, "companyID":$companyID, "groupID":$securityQuestionGroupID},function(data){ 
+                    // display the generated security question
+
+                    $('h4#generatedQuestion').text(data);	
+                });
+            }
+
+            function verifyAnswer(){
+                event.preventDefault();
+                //alert("IN");
+                $.post('ajax/validateSecurityQuestionAnswer.php', {"username":$username, "companyID":$companyID, "groupID":$securityQuestionGroupID},function(data){ 
+                    // 
+                    var answerInDB = data.trim();
+                    //alert("data: ." + answerInDB + "."); // DEBUG
+                    var answerEntered = document.getElementById("inputSecurityQuestionAnswer").value;
+                    //alert("entered: ." + answerEntered + "."); // DEBUG
+
+
+                    if(answerEntered === answerInDB)
+                    {
+                        alert("Answer Matched!");
+                        // redirect
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
