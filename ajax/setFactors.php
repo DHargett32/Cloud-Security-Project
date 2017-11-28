@@ -2,6 +2,15 @@
 
         // require the 'connect.php' file to connect to the database
         require '../db/connect.php';
+        
+        //NOTE: In Database, our factorID's are as follows:
+        //1 - Security Questions
+        //2 - PIN
+        //3 - Phone Call
+        //4 - Puzzles
+        //5 - Email
+        //6 - Text Message
+        //7 - Biometrics
 
         // set variables
         $securityQuestions = $_POST['securityQuestionsIsSet'];
@@ -14,7 +23,7 @@
         //get session info of current admin
         session_start();
         
-        // get session data of admin
+        // change to session variables
         $username = "slavett"; //$_SESSION["username"];
         $companyID = "1234"; //$_SESSION["companyID"];
         
@@ -28,26 +37,78 @@
         $deleteFactors->execute();
         
         //step 2: insert new company factors
-        $insertFactors = $conn->prepare(
-                "DELETE FROM CompanyAuthenticationFactor "
-                ."WHERE CompanyAuthenticationFactor.CompanyID = :companyID"
-        );
-        $insertFactors->bindValue(':companyID', $companyID);
+        
+        date_default_timezone_set("America/Chicago");
+        $createDate = date("Y/m/d h:i:sa");
+        
+        if($securityQuestions === "true"){  //1
+            $insertFactors1 = $conn->prepare(
+                "INSERT INTO CompanyAuthenticationFactor(CompanyID, FactorID, CreateDate) ".
+                "VALUES(:companyID, :factorID, :createDate)"
+            );
+            $insertFactors1->bindValue(':companyID', $companyID);
+            $insertFactors1->bindValue(':factorID', 1);
+            $insertFactors1->bindValue(':createDate', $createDate);
 
-        $insertFactors->execute();
-        
-        //date_default_timezone_set("America/Chicago");
-        //$createDate = date("Y/m/d h:i:sa");
-        $sql['UserClient'] = "INSERT INTO UserClient(UserName, CompanyID, FirstName, LastName, RoleID, Password, Pin, PhoneNumber,  Email, CreateDate) ".
-                                             "VALUES(:username, :companyID, :firstname, :lastname, :roleID, :password, :pin, :phoneNumber, :email, :createDate)";
+            $insertFactors1->execute();
+        }
+        if($pin === "true"){                //2
+            $insertFactors2 = $conn->prepare(
+                "INSERT INTO CompanyAuthenticationFactor(CompanyID, FactorID, CreateDate) ".
+                "VALUES(:companyID, :factorID, :createDate)"
+            );
+            $insertFactors2->bindValue(':companyID', $companyID);
+            $insertFactors2->bindValue(':factorID', 2);
+            $insertFactors2->bindValue(':createDate', $createDate);
 
-        
-        
-        //DONT FORGET
-        //1. Handle an admin selecting new factors for their company (not the first time)
-        
-        
-        
+            $insertFactors2->execute();
+        }
+        if($phoneCall === "true"){          //3
+            $insertFactors3 = $conn->prepare(
+                "INSERT INTO CompanyAuthenticationFactor(CompanyID, FactorID, CreateDate) ".
+                "VALUES(:companyID, :factorID, :createDate)"
+            );
+            $insertFactors3->bindValue(':companyID', $companyID);
+            $insertFactors3->bindValue(':factorID', 3);
+            $insertFactors3->bindValue(':createDate', $createDate);
+
+            $insertFactors3->execute();
+        }
+        if($puzzle === "true"){             //4
+            $insertFactors4 = $conn->prepare(
+                "INSERT INTO CompanyAuthenticationFactor(CompanyID, FactorID, CreateDate) ".
+                "VALUES(:companyID, :factorID, :createDate)"
+            );
+            $insertFactors4->bindValue(':companyID', $companyID);
+            $insertFactors4->bindValue(':factorID', 4);
+            $insertFactors4->bindValue(':createDate', $createDate);
+
+            $insertFactors4->execute();
+        }
+        if($email === "true"){              //5
+            $insertFactors5 = $conn->prepare(
+                "INSERT INTO CompanyAuthenticationFactor(CompanyID, FactorID, CreateDate) ".
+                "VALUES(:companyID, :factorID, :createDate)"
+            );
+            $insertFactors5->bindValue(':companyID', $companyID);
+            $insertFactors5->bindValue(':factorID', 5);
+            $insertFactors5->bindValue(':createDate', $createDate);
+
+            $insertFactors5->execute();
+        }
+        if($textMessage === "true"){        //6
+            $insertFactors6 = $conn->prepare(
+                "INSERT INTO CompanyAuthenticationFactor(CompanyID, FactorID, CreateDate) ".
+                "VALUES(:companyID, :factorID, :createDate)"
+            );
+            $insertFactors6->bindValue(':companyID', $companyID);
+            $insertFactors6->bindValue(':factorID', 6);
+            $insertFactors6->bindValue(':createDate', $createDate);
+
+            $insertFactors6->execute();
+        }
+
+echo "Authentication factors are set! Redirecting to Login page...^login2.php"        
         
 ?>
 

@@ -140,8 +140,8 @@ $('input#factors-submit').on('click', function() {﻿
                                                  //our delimiter is "^", if it exists in the message, there is a page redirect too
                                                  var delimiter = data.indexOf("^");
                                                  if(delimiter == "-1"){   //delimiter does not exist, alert normal message
-                                                    alert(data);
-                                                 } else {           //delimiter exists, (1 )output correct message, and (2) redirect to correct page
+                                                    alert("Sorry! It appears an error has occurred. Please try again!");
+                                                 } else {           //delimiter exists, (1 )output correct message, and (2) redirect to login
                                                     var datalength = data.length;
 
                                                     var alertData = data.substr(0, delimiter);

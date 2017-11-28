@@ -84,7 +84,7 @@
                 
             } else {    //role is (2) admin, redirect to authentication factors page
                 
-                echo "Welcome ", $user, "! You are an admin. Please select the set of authentication factors your company desires to use.";
+                echo "Welcome ", $user, "! You are an admin.";
                 echo "^factors.php"; //redirect to factors page. include "^" delimiter
                 
                 
