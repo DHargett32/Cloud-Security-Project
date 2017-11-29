@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Website - Login</title>
+        <title>Snap-on-Secure - Login</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -38,7 +38,23 @@
                 
                 <!-- link to register page -->
                 <a href="register.php"><h4>New User? Click Here to Sign Up!</h4></a>
+                
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+                <!-- display logo -->
+                <p style="text-align:center;"><img src="logo/login_logo.PNG" alt="Snap-on-Secure" align="middle"></p>
+                
             </form>
+            
 
         </div> <!-- /container -->
     </body>

@@ -74,8 +74,8 @@
                         $sql['UserClient'] = "INSERT INTO UserClient(UserName, CompanyID, FirstName, LastName, RoleID, Password, Pin, PhoneNumber,  Email, CreateDate) ".
                                              "VALUES(:username, :companyID, :firstname, :lastname, :roleID, :password, :pin, :phoneNumber, :email, :createDate)";
 
-                        $sql['SecurityQuestionAnswers'] = "INSERT INTO SecurityQuestionAnswer(QuestionID, QuestionGroupID, UserName, Answer, AnswerDate)". 
-                                                          "VALUES(:questionID, :questionGroupID, :username, :answer, :answerDate)";
+                        $sql['SecurityQuestionAnswers'] = "INSERT INTO SecurityQuestionAnswer(QuestionID, QuestionGroupID, UserName, CompanyID, Answer, AnswerDate)". 
+                                                          "VALUES(:questionID, :questionGroupID, :username, :companyID, :answer, :answerDate)";
 
                         try
                         {
@@ -114,6 +114,7 @@
                                 $stmt['SecurityQuestionAnswers']->bindValue(':questionID', getQuestionID($question1));
                                 $stmt['SecurityQuestionAnswers']->bindValue(':questionGroupID', "1");
                                 $stmt['SecurityQuestionAnswers']->bindValue(':username', $username);
+                                $stmt['SecurityQuestionAnswers']->bindValue(':companyID', $companyID);
                                 $stmt['SecurityQuestionAnswers']->bindValue(':answer', $answer1);
                                 $stmt['SecurityQuestionAnswers']->bindValue(':answerDate', $createDate);
                                 $stmt['SecurityQuestionAnswers']->execute();
@@ -122,6 +123,7 @@
                                 $stmt['SecurityQuestionAnswers']->bindValue(':questionID', getQuestionID($question2));
                                 $stmt['SecurityQuestionAnswers']->bindValue(':questionGroupID', "2");
                                 $stmt['SecurityQuestionAnswers']->bindValue(':username', $username);
+                                $stmt['SecurityQuestionAnswers']->bindValue(':companyID', $companyID);
                                 $stmt['SecurityQuestionAnswers']->bindValue(':answer', $answer2);
                                 $stmt['SecurityQuestionAnswers']->bindValue(':answerDate', $createDate);
                                 $stmt['SecurityQuestionAnswers']->execute();
@@ -130,6 +132,7 @@
                                 $stmt['SecurityQuestionAnswers']->bindValue(':questionID', getQuestionID($question3));
                                 $stmt['SecurityQuestionAnswers']->bindValue(':questionGroupID', "3");
                                 $stmt['SecurityQuestionAnswers']->bindValue(':username', $username);
+                                $stmt['SecurityQuestionAnswers']->bindValue(':companyID', $companyID);
                                 $stmt['SecurityQuestionAnswers']->bindValue(':answer', $answer3);
                                 $stmt['SecurityQuestionAnswers']->bindValue(':answerDate', $createDate);
                                 $stmt['SecurityQuestionAnswers']->execute();
@@ -154,7 +157,9 @@
                                 $updateRegistrationCodeAvailability->execute();
 
                                 echo "Registration Successful!";
+                                
                                 // navigate to login page
+                                echo "^login2.php";
                             }
 
                             catch(PDOException $e)
@@ -183,7 +188,7 @@
         // if no results, show error message
         else
         {
-            echo "Sorry. Either the Company ID, Registration Code, or both that you entered do match our records. Please verify that you have entered the correct information.";
+            echo "Sorry. Either the Company ID, Registration Code, or both that you entered do not match our records. Please verify that you have entered the correct information.";
         }
 
 

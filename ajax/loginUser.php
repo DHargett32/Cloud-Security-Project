@@ -14,23 +14,12 @@
         // Storing session data
         $_SESSION["username"] = $username;
         $_SESSION["companyID"] = $companyID;
-        //[add] num of factors needed to complete
-        //[add] num of factors completed
         
-        //we have a total of 7 authentication factors
-        //using sessions to create a series of factors they have to solve
-        //string nums 1-7, go through and parse one at a time
-        //say we had 1,3,5,and7
-        //just have one string with 1,3,5,7 (delimited by something)
-        //and as you go through each authentication factor, you just pop the front one off and restore the string
-        //or could use file name or authentication name
-        
-        
-
         //Steps: Check username, password, and companyID combination 
         //              - if exists: 
         //                      -- (1) is user? 
-        //                              --- begin series of company authentication factors
+        //                              --- begin series of factors if admin has set some 
+        //                              --- output message and go no further if admin has not set any factors 
         //                      -- (2) is admin?
         //                              --- allow company authentication factor selection
         //              - if not exists: output an alert
@@ -80,7 +69,107 @@
             if($roleID == 1) //role is (1) user, redirect and begin series of authentication factors
             {
                 
-                echo "Welcome ", $user, "! You are a user. Please authenticate yourself through the following set of factors.";
+                //step 3: get the total number of authentication factors for this company (if any exist)
+                $getNumberOfFactors = $conn->prepare(
+                "SELECT * FROM CompanyAuthenticationFactor "
+                . "WHERE CompanyAuthenticationFactor.CompanyID = :companyID"
+                );
+
+                // Bind values
+                $getNumberOfFactors->bindValue(':companyID', $companyID);
+
+                // Run query checking if any factors are set
+                $getNumberOfFactors->execute();
+
+                //get count of rows
+                $numRowsNumberOfFactors = count($getNumberOfFactors->fetchAll());
+                
+                if($numRowsNumberOfFactors != 0 && $numRowsNumberOfFactors != NULL) {    //factors exist
+                    
+                    // Storing session data (total number of factors to complete, and total number of factors completed)
+                    $_SESSION["totalFactors"] = $numRowsNumberOfFactors;
+                    $_SESSION["completedFactors"] = 0;
+                    
+                    // re-execute the query to "re-fill" the results
+                    $getNumberOfFactors->execute();
+                    
+                    //array of existing factors
+                    $factorIDs = [];
+
+                    //temp variables used in loops
+                    $count = 0;
+                    $count2 = 0;
+
+                    //a string of existing factorIDs
+                    $stringOfFactors = "";
+
+                    //get each existing factor
+                    while($r = $getNumberOfFactors->fetch()){
+                        $tempfactorID = $r['FactorID'];
+                        $factorIDs[$count] = $tempfactorID; 
+                        $count = $count + 1;
+                    }
+
+                    //get a string of existing factors with delimiter
+                    if ($count === 1) {
+                        $stringOfFactors = $stringOfFactors . $factorIDs[0];
+                    } else {
+                        while($count2 < $count){
+                            if(($count - $count2) === 1){ //no comma if last factor
+                                $stringOfFactors = $stringOfFactors . $factorIDs[$count2];
+                                $count2 = $count2 + 1;
+                            } else {
+                                 $stringOfFactors = $stringOfFactors . $factorIDs[$count2] . ",";
+                                 $count2 = $count2 + 1;
+                            }
+                        }
+                    }
+
+                    
+                    //remove the first factor from the string and redirect to that page
+                    $stringLength = strlen($stringOfFactors);
+                    if($stringLength > 1) {
+                        $firstFactorToComplete = $stringOfFactors[0];
+                        $stringOfFactors = substr($stringOfFactors, 2);
+                    } else {
+                        $firstFactorToComplete = $stringOfFactors[0];
+                    }
+                    
+                    // store the sequence of factorIDs
+                    $_SESSION["factors"] = $stringOfFactors;
+                    
+                    //NOTE: In Database, our factorID's are as follows:
+                    //1 - Security Questions
+                    //2 - PIN
+                    //3 - Phone Call
+                    //4 - Puzzles
+                    //5 - Email
+                    //6 - Text Message
+                    //7 - Biometrics
+                    
+                    echo "Welcome ", $user, "! Please authenticate yourself through the factors your company has set up.";
+                    
+                    //redirect to correct authentication factor
+                    if($firstFactorToComplete === "1") {
+                        echo "^securityQuestion.php";
+                    } else if ($firstFactorToComplete === "2") {
+                        echo "^pin.php";
+                    } else if ($firstFactorToComplete === "3") {
+                        echo "^call.php";
+                    } else if ($firstFactorToComplete === "4") {
+                        echo "^puzzle.php";
+                    } else if ($firstFactorToComplete === "5") {
+                        echo "^email.php";
+                    } else {
+                        echo "^text.php";
+                    }
+                    
+                } else {        //no factors exist
+                    
+                    echo "Welcome ", $user, "! Sorry, it appears your company admin(s) has not set up any authentication factors yet. Please "
+                            . "try again later.";
+                    
+                }
                 
             } else {    //role is (2) admin, redirect to authentication factors page
                 

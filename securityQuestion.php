@@ -38,7 +38,9 @@
             //
             $username = "dhargett"; // replace with session variable
             $companyID = "1234"; // replace with session variable
-            $securityQuestionGroupID = Math.floor((Math.random() * 3) + 1);
+            
+            //generate random question group number
+            $securityQuestionGroupID = Math.floor((Math.random() * 3) + 1); 
 
             function generateSecurityQuestion(){
 
@@ -64,6 +66,8 @@
                     {
                         alert("Answer Matched!");
                         // redirect
+                    } else {
+                        alert("Incorrect answer. Please try again.");
                     }
                 });
             }

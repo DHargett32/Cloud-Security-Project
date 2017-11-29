@@ -9,11 +9,11 @@
                 "SELECT SecurityQuestionAnswer.QuestionID FROM SecurityQuestionAnswer "
                 ."WHERE SecurityQuestionAnswer.Username = :username "
                 ."AND SecurityQuestionAnswer.QuestionGroupID = :questionGroupID "
-                //."AND SecurityQuestionAnswer.CompanyID = :companyID "
+                ."AND SecurityQuestionAnswer.CompanyID = :companyID "
         );
 
     $getSecurityQuestionID->bindValue(':username', $username);
-    //$getSecurityQuestionID->bindValue(':companyID', $companyID);
+    $getSecurityQuestionID->bindValue(':companyID', $companyID);
     $getSecurityQuestionID->bindValue(':questionGroupID', $questionGroupID);
 
     try {

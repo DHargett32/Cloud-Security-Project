@@ -1,6 +1,5 @@
 $('input#submitPin').on('click', function() {﻿
     event.preventDefault();
-    alert("IN");    
     $username = "dhargett"; // replace with session variable
     $companyID = "1234"; // replace with session variable
     $enteredPIN = $('input#inputPIN').val();
@@ -13,12 +12,12 @@ $('input#submitPin').on('click', function() {﻿
         //alert("After: " + dataPin);
         if(entered === dataPin)
         {
-            //alert("Authentication successful!"); // DEBUG
+            alert("Pin correct!"); 
             // redirect goes here  
         }
         else
         {
-            alert("Uh oh. The answer you entered did not match our records. Please try again.");
+            alert("Incorrect pin. Please try again.");
         }
     });
 
