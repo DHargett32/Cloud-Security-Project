@@ -31,12 +31,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script>
-        event.preventDefault(); // prevent page reload   
+        //event.preventDefault(); // prevent page reload   
         // Do not remove this (it's just a comment and won't effect the functions)
         // SimpleCaptcha v1.0 © Anudeep Tubati
         function ChangeCaptcha() {
-            var chars = "a"; //0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz
-            var string_length = 1; //6
+            var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+            var string_length = 6;
             var ChangeCaptcha = '';
             for (var i=0; i<string_length; i++) {
                 var rnum = Math.floor(Math.random() * chars.length);
@@ -66,7 +66,7 @@
                 <input type="text" id="CaptchaAnswer" maxlength="6" class="form-control" placeholder="Answer" autocomplete="off" required>
 
 
-                <button id="puzzleAnswer-submit" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+                <input id="puzzleAnswer-submit" class="btn btn-lg btn-primary btn-block" type="submit"></input>
             </form>
             <script type="text/javascript" src="js/puzzle.js"></script>
 
