@@ -80,10 +80,8 @@
         
         <script type="text/javascript">
             function getCurrentFactors() {
-                $username = "slavett"; // replace with session variable
-                $companyID = "1234"; // replace with session variable
-
-                $.post('ajax/loadFactors.php', {"username": $username, "companyID": $companyID}, function (data) {
+                event.preventDefault();
+                $.post('ajax/loadFactors.php', {}, function (data) {
                     var delimiter = data.indexOf("^");
                     if(delimiter == "-1"){   //delimiter does not exist, alert normal message
                        alert(data);
@@ -96,11 +94,6 @@
 
                        //split factorIDs string into array of variables
                        var factorIDArray = factorIDs.split(',');
-                       
-//                       alert(factorIDs);
-//                       alert("length is " + factorIDArray.length);
-//                       alert(factorIDArray[0]);
-//                       alert(factorIDArray[1]);
                        
                        //NOTE: In Database, our factorID's are as follows:
                        //1 - Security Questions

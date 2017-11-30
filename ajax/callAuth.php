@@ -1,8 +1,11 @@
 <?php
     require '../db/connect.php';  
     
-    $username = $_POST['username']; //"dhargett";//
-    $companyID = $_POST['companyID'];//"1234";
+    //start a session 
+    session_start();
+    
+    $username = $_SESSION["username"];
+    $companyID = $_SESSION["companyID"];
     
     $getUserPhoneNumber = $conn->prepare(
                 "SELECT UserClient.PhoneNumber FROM UserClient "

@@ -1,8 +1,11 @@
 <?php
     require '../db/connect.php';  
     
-    $username = $_POST['username']; //"dhargett";//
-    $companyID = $_POST['companyID'];//"1234";
+    //start a session 
+    session_start();
+    
+    $username = $_SESSION["username"];
+    $companyID = $_SESSION["companyID"];
     $questionGroupID = $_POST['groupID'];
 
     $getSecurityQuestionID = $conn->prepare(
@@ -27,10 +30,6 @@
     $r = $getSecurityQuestionID->fetch();
     $QuestionIDResult = $r['QuestionID']; 
         
-    
-        
-    
-    
     $getSecurityQuestionText = $conn->prepare(
             "SELECT SecurityQuestion.Question FROM SecurityQuestion "
             ."WHERE SecurityQuestion.QuestionID = :questionID "

@@ -1,8 +1,12 @@
 <?php
 
-require '../db/connect.php';  
+    require '../db/connect.php';  
     
-    $companyID = $_POST['companyID'];//"1234";
+    //start a session 
+    session_start();
+    
+    $username = $_SESSION["username"];
+    $companyID = $_SESSION["companyID"];
     
     //step 1: run query to get existing company factors
     $loadFactors = $conn->prepare(

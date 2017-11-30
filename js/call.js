@@ -1,8 +1,6 @@
-$('input#puzzleAnswer-submit').on('click', function() {﻿
-    event.preventDefault();    
-    $CaptchaText = $('input#randomfield').val();
-    $CaptchaAnswer = $('input#CaptchaAnswer').val();
-    $.post('ajax/puzzleAuth.php', {"CaptchaText":$CaptchaText, "CaptchaAnswer":$CaptchaAnswer}, function(data){
+$('input#call-submit').on('click', function() {﻿
+    event.preventDefault();
+    $.post('ajax/callAuth2.php', {}, function(data){
         
         //check returned data, see if page redirect is appended to an echo message
         //our delimiter is "^", if it exists in the message, there is a page redirect too
@@ -21,6 +19,5 @@ $('input#puzzleAnswer-submit').on('click', function() {﻿
         }
         
     });
-    
-});
 
+});

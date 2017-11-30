@@ -1,39 +1,20 @@
 <?php
-    
-    require '../db/connect.php';
-    
+
+    require '../db/connect.php';    
+
     //start a session 
     session_start();
     
     $username = $_SESSION["username"];
     $companyID = $_SESSION["companyID"];
-    $questionGroupID = $_POST['groupID'];
-    $answerEntered = $_POST['answerEntered'];
-
-    $getSecurityQuestionAnswer = $conn->prepare(
-            "SELECT SecurityQuestionAnswer.Answer FROM SecurityQuestionAnswer "
-            ."WHERE SecurityQuestionAnswer.Username = :username "
-            ."AND SecurityQuestionAnswer.QuestionGroupID = :questionGroupID "
-            ."AND SecurityQuestionAnswer.CompanyID = :companyID "
-    );
-
-    $getSecurityQuestionAnswer->bindValue(':username', $username);
-    $getSecurityQuestionAnswer->bindValue(':companyID', $companyID);
-    $getSecurityQuestionAnswer->bindValue(':questionGroupID', $questionGroupID);
-
-    try {
-        $getSecurityQuestionAnswer->execute();
-    } catch (Exception $ex) {
-        echo $ex;
-    }
+    $CaptchaAnswer = $_POST['CaptchaAnswer'];
+    $CaptchaText = $_POST['CaptchaText'];
     
-    $r = $getSecurityQuestionAnswer->fetch();
-    $QuestionAnswerResult = $r['Answer'];
     
-    //check if answer matches database answer
-    if($answerEntered === $QuestionAnswerResult)
+    //check if puzzle is correct
+    if($CaptchaText === $CaptchaAnswer)
     {
-        echo "Answer Matched!";
+        echo "Puzzle correct!";
         
         //remove the first factor from the string and redirect to that page
         $stringOfFactors = $_SESSION["factors"]; 
@@ -56,7 +37,6 @@
             echo "^company.php";
 
         } else { //more factors remain
-            
             //redirect to correct authentication factor
             if($factorToComplete === "1") {
                 echo "^securityQuestion.php";
@@ -72,10 +52,11 @@
                 echo "^text.php";
             }
         }
-            
-    } else {
+    }
+    else
+    {
         echo "Incorrect answer. Please try again.";
     }
-    
+
 ?>
 

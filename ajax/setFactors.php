@@ -23,9 +23,9 @@
         //get session info of current admin
         session_start();
         
-        // change to session variables
-        $username = "slavett"; //$_SESSION["username"];
-        $companyID = "1234"; //$_SESSION["companyID"];
+        //session variables
+        $username = $_SESSION["username"];
+        $companyID = $_SESSION["companyID"];
         
         //step 1: delete any existing factors from table
         $deleteFactors = $conn->prepare(

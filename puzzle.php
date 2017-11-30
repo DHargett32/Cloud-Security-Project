@@ -23,28 +23,14 @@
         }
         </style>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script>
-        //event.preventDefault(); // prevent page reload   
-        // Do not remove this (it's just a comment and won't effect the functions)
-        // SimpleCaptcha v1.0 © Anudeep Tubati
-        function ChangeCaptcha() {
-            var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
-            var string_length = 6;
-            var ChangeCaptcha = '';
-            for (var i=0; i<string_length; i++) {
-                var rnum = Math.floor(Math.random() * chars.length);
-                ChangeCaptcha += chars.substring(rnum,rnum+1);
-            }
-            document.getElementById('randomfield').value = ChangeCaptcha;
-        }
-        </script>
+
+        <!-- Add jQuery -->
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="\winmarkltd-BootstrapFormHelpers-2.3.0-17-gd4201db\winmarkltd-BootstrapFormHelpers-d4201db\js\bootstrap-formhelpers-phone.js"></script>
         
         <!-- Custom styles for this template, given with example on bootstrap website -->
         <link href="style.css" rel="stylesheet">
@@ -60,12 +46,25 @@
                 <br>
                 <h4>Please enter the text in the box above</h4>
                 <input type="text" id="CaptchaAnswer" maxlength="6" class="form-control" placeholder="Answer" autocomplete="off" required>
-
-
                 <input id="puzzleAnswer-submit" class="btn btn-lg btn-primary btn-block" type="submit"></input>
             </form>
             <script type="text/javascript" src="js/puzzle.js"></script>
 
         </div> <!-- /container -->
+        <script>
+        // Do not remove this (it's just a comment and won't effect the functions)
+        // SimpleCaptcha v1.0 © Anudeep Tubati
+        function ChangeCaptcha() {
+            event.preventDefault(); 
+            var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+            var string_length = 6;
+            var ChangeCaptcha = '';
+            for (var i=0; i<string_length; i++) {
+                var rnum = Math.floor(Math.random() * chars.length);
+                ChangeCaptcha += chars.substring(rnum,rnum+1);
+            }
+            document.getElementById('randomfield').value = ChangeCaptcha;
+        }
+        </script>
     </body>
 </html>

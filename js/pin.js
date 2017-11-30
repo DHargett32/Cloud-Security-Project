@@ -1,7 +1,6 @@
 $('input#submitPin').on('click', function() {﻿
     event.preventDefault();
     $enteredPIN = $('input#inputPIN').val();
-    var entered = $enteredPIN.toString();
     $.post('ajax/pinAuth.php', {"enteredPIN":$enteredPIN}, function(data){
         
         //check returned data, see if page redirect is appended to an echo message

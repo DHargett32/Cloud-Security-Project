@@ -23,26 +23,25 @@
 
             <form class="form-signin">
                 <h1 class="form-signin-heading">Phone Call Authentication</h1>
-                <p>A phone call is being placed the the following number:</p>
+                <p>A phone call is being placed to the following number:</p>
                 <span style="font-weight:bold"><div id="phoneNumber"></div></span>
-                <script>
-                    function getPhoneNumber(){
-                        $username = "dhargett"; // replace with session variable
-                        $companyID = "1234"; // replace with session variable
-                        
-                        $.post('ajax/callAuth.php', {"username":$username, "companyID":$companyID},function(data){ 
-                            // display the users email address to indicate which email address the code was sent to
-                            $('div#phoneNumber').text(data);	
-                        });
-                    }
-                </script>
+                
                 <br>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Submit Your Code" required> 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-                <!-- link to register page -->
+                <input type="password" id="inputPassword" class="form-control" placeholder="Verification Code" required> 
+                <input id="call-submit" class="btn btn-lg btn-primary btn-block" type="submit"></input>
                 
             </form>
 
         </div> <!-- /container -->
+        <script type="text/javascript" src="js/call.js"></script>
+        <script type="text/javascript">
+            function getPhoneNumber(){
+                event.preventDefault();
+                $.post('ajax/callAuth.php', {},function(data){ 
+                    // display the users phone number to indicate which phone number was called
+                    $('div#phoneNumber').text(data);	
+                });
+            }
+        </script>
     </body>
 </html>

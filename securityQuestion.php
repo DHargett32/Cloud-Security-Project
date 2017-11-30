@@ -29,45 +29,41 @@
                 
                 <input type="text" id="inputSecurityQuestionAnswer" class="form-control" placeholder="Answer" autocomplete="off" required>
 
-
-                <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="verifyAnswer()">Submit</button>
+                <input type="submit" class="btn btn-lg btn-primary btn-block" id="securityQuestion-submit" onclick="verifyAnswer()" value="Submit"></input>
             </form>
 
         </div> <!-- /container -->
         <script>
-            //
-            $username = "dhargett"; // replace with session variable
-            $companyID = "1234"; // replace with session variable
-            
-            //generate random question group number
-            $securityQuestionGroupID = Math.floor((Math.random() * 3) + 1); 
-
             function generateSecurityQuestion(){
-
-                $.post('ajax/generateSecurityQuestion.php', {"username":$username, "companyID":$companyID, "groupID":$securityQuestionGroupID},function(data){ 
-                    // display the generated security question
-
-                    $('h4#generatedQuestion').text(data);	
+                event.preventDefault();
+                
+                //generate random question group number
+                $securityQuestionGroupID = Math.floor((Math.random() * 3) + 1); 
+                
+                $.post('ajax/generateSecurityQuestion.php', {"groupID":$securityQuestionGroupID},function(data){ 
+                    $('h4#generatedQuestion').text(data);
+                    //alert(data);
                 });
             }
 
             function verifyAnswer(){
                 event.preventDefault();
-                //alert("IN");
-                $.post('ajax/validateSecurityQuestionAnswer.php', {"username":$username, "companyID":$companyID, "groupID":$securityQuestionGroupID},function(data){ 
-                    // 
-                    var answerInDB = data.trim();
-                    //alert("data: ." + answerInDB + "."); // DEBUG
-                    var answerEntered = document.getElementById("inputSecurityQuestionAnswer").value;
-                    //alert("entered: ." + answerEntered + "."); // DEBUG
+                $answerEntered = $('input#inputSecurityQuestionAnswer').val();
+                $.post('ajax/validateSecurityQuestionAnswer.php', {"groupID":$securityQuestionGroupID, "answerEntered":$answerEntered},function(data){ 
+                    //check returned data, see if page redirect is appended to an echo message
+                    //our delimiter is "^", if it exists in the message, there is a page redirect too
+                    var delimiter = data.indexOf("^");
+                    if(delimiter == "-1"){   //delimiter does not exist, alert normal message
+                       alert(data);
+                    } else {           //delimiter exists, (1 )output correct message, and (2) redirect to correct page
+                       var datalength = data.length;
 
+                       var alertData = data.substr(0, delimiter);
+                       var redirectPage = data.substr(delimiter + 1, datalength);
 
-                    if(answerEntered === answerInDB)
-                    {
-                        alert("Answer Matched!");
-                        // redirect
-                    } else {
-                        alert("Incorrect answer. Please try again.");
+                       alert(alertData);
+
+                       window.location = redirectPage;
                     }
                 });
             }

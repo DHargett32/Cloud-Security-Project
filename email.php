@@ -37,13 +37,11 @@
             </form>
 
         </div>
-
+        <script type="text/javascript" src="js/email.js"></script>
         <script type="text/javascript">
             function getEmail() {
-                $username = "dhargett"; // replace with session variable
-                $companyID = "1234"; // replace with session variable
-
-                $.post('ajax/emailAuth.php', {"username": $username, "companyID": $companyID}, function (data) {
+                event.preventDefault();
+                $.post('ajax/emailAuth.php', {}, function (data) {
                     // display the users email address to indicate which email address the code was sent to
                     $('div#emailAddress').text(data);
                 });
