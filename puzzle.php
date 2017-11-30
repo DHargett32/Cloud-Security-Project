@@ -51,10 +51,6 @@
     </head>
     <body onLoad="ChangeCaptcha()">
 
-        
-
-        
-
         <div class="container">
 
             <form class="form-signin">

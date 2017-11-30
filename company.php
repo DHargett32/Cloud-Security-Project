@@ -32,5 +32,8 @@
             </form>
             
         </div> <!-- /container -->
+        <script type="text/javascript">
+            alert("Congratulations! You have been successfully authenticated and redirected to your company login!");
+        </script> 
     </body>
 </html>

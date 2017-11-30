@@ -1,5 +1,5 @@
 $('input#puzzleAnswer-submit').on('click', function() {﻿
-    //event.preventDefault();    
+    event.preventDefault();    
     $username = "dhargett"; // replace with session variable
     $companyID = "1234"; // replace with session variable
     $CaptchaText = $('input#randomfield').val();
@@ -7,12 +7,12 @@ $('input#puzzleAnswer-submit').on('click', function() {﻿
     
     if($CaptchaText === $CaptchaAnswer)
     {
-        alert("Success!");
+        alert("Puzzle correct!");
         // redirect goes here
     }
     else
     {
-        alert("Sorry, please try again.");
+        alert("Incorrect answer. Please try again.");
     }
 
 });
