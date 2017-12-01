@@ -8,7 +8,7 @@
         <!-- MD Bootstrap for Footer content -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/css/mdb.min.css"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.3/js/mdb.min.js"></script>
-        
+
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -20,7 +20,7 @@
 
         <!-- Custom styles for this template, given with example on bootstrap website -->
         <link href="style.css" rel="stylesheet">
-        
+
     </head>
     <body>
         <div class="container">
@@ -54,12 +54,15 @@
                 <br>
                 <br>
 
-                <!-- display logo -->
-                <p style="text-align:center;"><img src="logo/login_logo.PNG" alt="Snap-on-Secure" align="middle"></p>
-
             </form>
 
 
         </div> <!-- /container -->
+        
+        <footer class="footer">
+            <div class="footer navbar-fixed-bottom">
+                <img src="logo/footer.PNG" alt="Snap-on-Secure Footer" style="width: 100%;">
+            </div>
+        </footer>
     </body>
 </html>

@@ -48,9 +48,17 @@
                 <input type="text" id="CaptchaAnswer" maxlength="6" class="form-control" placeholder="Answer" autocomplete="off" required>
                 <input id="puzzleAnswer-submit" class="btn btn-lg btn-primary btn-block" type="submit"></input>
             </form>
-            <script type="text/javascript" src="js/puzzle.js"></script>
+            
 
         </div> <!-- /container -->
+        
+        <footer class="footer">
+            <div class="footer navbar-fixed-bottom">
+                <img src="logo/footer.PNG" alt="Snap-on-Secure Footer" style="width: 100%;">
+            </div>
+        </footer>
+        
+        <script type="text/javascript" src="js/puzzle.js"></script>
         <script>
         // Do not remove this (it's just a comment and won't effect the functions)
         // SimpleCaptcha v1.0 © Anudeep Tubati

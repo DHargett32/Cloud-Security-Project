@@ -109,6 +109,9 @@
                         $factorIDs[$count] = $tempfactorID; 
                         $count = $count + 1;
                     }
+                    
+                    //shuffle the order of factors to complete
+                    shuffle($factorIDs);
 
                     //get a string of existing factors with delimiter
                     if ($count === 1) {

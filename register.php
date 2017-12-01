@@ -90,9 +90,15 @@
 
                 <!-- JavaScript only seems to work with "input" tag... so we can disguise the input tag as a Bootstrap button with class attribute-->
                 <input type="submit" class="btn btn-lg btn-primary btn-block" id="registerUser-submit" value="Register Now!"></input>
-                <script type="text/javascript" src="js/register.js"></script>
+                
             </form>
 
         </div> <!-- /container -->
+        <footer class="footer">
+            <div class="footer navbar-fixed-bottom">
+                <img src="logo/footer.PNG" alt="Snap-on-Secure Footer" style="width: 100%;">
+            </div>
+        </footer>
+        <script type="text/javascript" src="js/register.js"></script>
     </body>
 </html>
