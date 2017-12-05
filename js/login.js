@@ -1,13 +1,18 @@
+/*$(function(){
+    alert("Hello!");
+
+});*/
+
 $('input#loginUser-submit').on('click', function() {﻿
+    //alert("in this");
 	event.preventDefault();
-        var username = $('input#inputUsername').val();
+    var username = $('input#inputUsername').val();
 	var password = $('input#inputPassword').val(); 
-        var companyID = $('input#inputCompanyID').val();
-	
+    var companyID = $('input#inputCompanyID').val();
+	//alert("username: " + username);
         
 	$.post('ajax/loginUser.php', {inputUsername: username, inputPassword: password, inputCompanyID: companyID},
                                          function(data){
-                                             
                                              //check returned data, see if page redirect is appended to an echo message
                                              //our delimiter is "^", if it exists in the message, there is a page redirect too
                                              var delimiter = data.indexOf("^");

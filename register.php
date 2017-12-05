@@ -96,7 +96,7 @@
         </div> <!-- /container -->
         <footer class="footer">
             <div class="footer navbar-fixed-bottom">
-                <img src="logo/footer.PNG" alt="Snap-on-Secure Footer" style="width: 100%;">
+                <!--<img src="logo/footer.PNG" alt="Snap-on-Secure Footer" style="width: 100%;">-->
             </div>
         </footer>
         <script type="text/javascript" src="js/register.js"></script>

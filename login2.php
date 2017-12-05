@@ -28,17 +28,17 @@
             <form class="form-signin">
                 <h1 class="form-signin-heading">Login or Sign Up</h1>
                 <label for="inputUsername" class="sr-only">Username:</label>
-                <input type="text" id="inputUsername" class="form-control" placeholder="Username" required>
+                <input type="text" id="inputUsername" class="form-control" autocomplete="off" placeholder="Username" required>
 
                 <label for="inputPassword" class="sr-only">Password:</label>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
+                <input type="password" id="inputPassword" class="form-control" autocomplete="off" placeholder="Password" required> 
 
                 <label for="inputCompanyID" class="sr-only">Company ID:</label>
-                <input type="text" id="inputCompanyID" class="form-control" placeholder="Company ID" required>
+                <input type="text" id="inputCompanyID" class="form-control" autocomplete="off" placeholder="Company ID" required>
 
                 <!-- JavaScript only seems to work with "input" tag... so we can disguise the input tag as a Bootstrap button-->
                 <input type="submit" class="btn btn-lg btn-primary btn-block" id="loginUser-submit" value="Login"></input>
-                <script type="text/javascript" src="js/login.js"></script>
+                <script type="text/javascript" src="./js/login.js"></script>
 
                 <!-- link to register page -->
                 <a href="register.php"><h4>New User? Click Here to Sign Up!</h4></a>

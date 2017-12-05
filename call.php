@@ -27,7 +27,7 @@
                 <span style="font-weight:bold"><div id="phoneNumber"></div></span>
                 
                 <br>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Verification Code" required> 
+                <input type="password" id="inputPassword" class="form-control"  autocomplete="off" placeholder="Verification Code" required> 
                 <input id="call-submit" class="btn btn-lg btn-primary btn-block" type="submit"></input>
                 
             </form>

@@ -64,6 +64,26 @@
             //echo $user;
             //echo $compID;
 
+            // Query to retrieve additional data related to the user
+            $getUserDetails = $conn->prepare(
+                "SELECT UserClient.Email, UserClient.PhoneNumber, UserClient.Pin FROM UserClient "
+                . "WHERE UserClient.username = :username AND UserClient.password = :password AND UserClient.companyID = :companyID"
+            );
+
+            // Bind values
+            $getUserDetails->bindValue(':username', $username);
+            $getUserDetails->bindValue(':password', $password);
+            $getUserDetails->bindValue(':companyID', $companyID);
+
+            $getUserDetails->execute();
+            $d = $getUserDetails->fetch();
+
+            $_SESSION["Email"] = $d['Email'];
+            $_SESSION["PhoneNumber"] = $d['PhoneNumber'];
+            $_SESSION["Pin"] = $d['Pin'];
+
+
+
             
             // check user role
             if($roleID == 1) //role is (1) user, redirect and begin series of authentication factors

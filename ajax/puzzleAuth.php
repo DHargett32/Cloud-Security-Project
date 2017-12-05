@@ -9,13 +9,24 @@
     $companyID = $_SESSION["companyID"];
     $CaptchaAnswer = $_POST['CaptchaAnswer'];
     $CaptchaText = $_POST['CaptchaText'];
-    
-    
+    $correct = "N";
+    date_default_timezone_set("America/Chicago");
+    $date = date("Y/m/d h:i:sa");;
+
+    $submitPuzzleSessionData = $conn->prepare("INSERT INTO PuzzleAnswer(UserName, CompanyID, AnswerText, PuzzleAnswerDate, Correct) ".
+                                              "VALUES (:username, :companyID, :answerText, :puzzleAnswerDate, :correct)");
+
+
+
     //check if puzzle is correct
     if($CaptchaText === $CaptchaAnswer)
     {
         echo "Puzzle correct!";
         
+        // answer is correct
+        $correct = "Y";
+
+
         //remove the first factor from the string and redirect to that page
         $stringOfFactors = $_SESSION["factors"]; 
         $stringLength = strlen($stringOfFactors);
@@ -55,8 +66,16 @@
     }
     else
     {
-        echo "Incorrect answer. Please try again.";
+        echo "Incorrect answer. Please try again.";        
     }
 
+    $submitPuzzleSessionData->bindValue(':username', $username);
+    $submitPuzzleSessionData->bindValue(':companyID', $companyID);
+    $submitPuzzleSessionData->bindValue(':answerText', $CaptchaAnswer);
+    $submitPuzzleSessionData->bindValue(':puzzleAnswerDate', $date);
+    $submitPuzzleSessionData->bindValue(':correct', $correct);
+   
+    // send authentication factor data to the database
+    $submitPuzzleSessionData->execute();
 ?>
 
