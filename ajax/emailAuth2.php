@@ -7,7 +7,40 @@
     
     $username = $_SESSION["username"];
     $companyID = $_SESSION["companyID"];
+    $email = $_SESSION["Email"];
+    // generate 4 digit code to be stored in database
+    $code = strVal(rand(1,9));
+    $code .= strVal(rand(1,9));
+    $code .= strVal(rand(1,9));
+    $code .= strVal(rand(1,9));
+    // end of code generation
     
+    date_default_timezone_set("America/Chicago");
+    $date = date("Y/m/d h:i:sa");;
+    $isValid = "Y"; // for demo purposes, the code entered will ALWAYS be valid
+
+    $submitEmailFactor = $conn->prepare("INSERT INTO EmailFactor(UserName, CompanyID, Email, Code) ".
+                                        "VALUES (:username, :companyID, :email, :code)");
+    
+    $submitEmailFactor->bindValue(':username', $username);
+    $submitEmailFactor->bindValue(':companyID', $companyID);
+    $submitEmailFactor->bindValue(':email', $email);
+    $submitEmailFactor->bindValue(':code', $code);
+    $submitEmailFactor->execute();
+    
+    $submitEmailSessionData = $conn->prepare("INSERT INTO EmailValidation(UserName, CompanyID, Email, Code, EmailValidationDate, IsValid) ".
+                                              "VALUES (:username, :companyID, :email, :code, :emailValidationDate, :isValid)");
+
+    // Bind values
+    $submitEmailSessionData->bindValue(':username', $username);
+    $submitEmailSessionData->bindValue(':companyID', $companyID);
+    $submitEmailSessionData->bindValue(':email', $email);
+    $submitEmailSessionData->bindValue(':code', $code);
+    $submitEmailSessionData->bindValue(':emailValidationDate', $date);
+    $submitEmailSessionData->bindValue(':isValid', $isValid);
+    $submitEmailSessionData->execute();
+
+
     echo "Email code correct!"; 
             
             //remove the first factor from the string and redirect to that page

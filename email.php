@@ -31,7 +31,7 @@
                 <span style="font-weight:bold"><div id="emailAddress"></div></span>
                 <br>
                 <p>Please enter the code in the box below:</p>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Verification Code" required> 
+                <input type="password" id="inputPassword" class="form-control" autocomplete="off" placeholder="Verification Code" required> 
                 <input id="email-submit" class="btn btn-lg btn-primary btn-block" type="submit"></input>
 
             </form>
