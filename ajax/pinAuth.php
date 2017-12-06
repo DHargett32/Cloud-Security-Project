@@ -7,6 +7,11 @@
     $username = $_SESSION["username"];
     $companyID = $_SESSION["companyID"];
     $enteredPIN = $_POST['enteredPIN'];
+    date_default_timezone_set("America/Chicago");
+    $date = date("Y/m/d h:i:sa");;
+    $isValid = "Y"; // for demo purposes, the code entered will ALWAYS be valid
+    $correct = "N";
+    
     
     $getUserPIN = $conn->prepare(
                 "SELECT UserClient.PIN FROM UserClient "
@@ -29,6 +34,8 @@
         if($enteredPIN === $userPINResult)
         {
             echo "Pin correct!"; 
+            $correct = "Y";
+            
             
             //remove the first factor from the string and redirect to that page
             $stringOfFactors = $_SESSION["factors"]; 
@@ -71,8 +78,27 @@
         else
         {
             echo "Incorrect pin. Please try again.";
+            $correct = "N";
         }
         
+        $submitPinFactor = $conn->prepare("INSERT INTO PinFactor(UserName, CompanyID, Pin, PinDate) ".
+                                        "VALUES (:username, :companyID, :pin, :pinDate)");
+    
+        $submitPinFactor->bindValue(':username', $username);
+        $submitPinFactor->bindValue(':companyID', $companyID);
+        $submitPinFactor->bindValue(':pin', $enteredPIN);
+        $submitPinFactor->bindValue(':pinDate', $date);
+        $submitPinFactor->execute();
+
+        $submitPinSessionData = $conn->prepare("INSERT INTO PinAnswer(UserName, CompanyID, Pin, PinDate, Correct) ".
+                                    "VALUES (:username, :companyID, :pin, :pinDate, :correct)");
+
+        $submitPinSessionData->bindValue(':username', $username);
+        $submitPinSessionData->bindValue(':companyID', $companyID);
+        $submitPinSessionData->bindValue(':pin', $enteredPIN);
+        $submitPinSessionData->bindValue(':pinDate', $date);
+        $submitPinSessionData->bindValue(':correct', $correct);
+        $submitPinSessionData->execute();
         
         
 ?>
