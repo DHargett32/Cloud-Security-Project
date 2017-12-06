@@ -16,7 +16,7 @@
     // end of code generation
     
     date_default_timezone_set("America/Chicago");
-    $date = date("Y/m/d h:i:sa");;
+    $date = date("Y/m/d h:i:sa");
     $isValid = "Y"; // for demo purposes, the code entered will ALWAYS be valid
 
     $submitEmailFactor = $conn->prepare("INSERT INTO EmailFactor(UserName, CompanyID, Email, Code) ".
