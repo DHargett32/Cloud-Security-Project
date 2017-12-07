@@ -27,7 +27,7 @@
 
                 <h4 id='generatedQuestion'>question goes here</h4>
                 
-                <input type="text" id="inputSecurityQuestionAnswer" class="form-control" placeholder="Answer" autocomplete="off" required>
+                <input type="password" id="inputSecurityQuestionAnswer" class="form-control" placeholder="Answer" autocomplete="off" required>
 
                 <input type="submit" class="btn btn-lg btn-primary btn-block" id="securityQuestion-submit" onclick="verifyAnswer()" value="Submit"></input>
             </form>

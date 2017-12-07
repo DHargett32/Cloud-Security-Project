@@ -45,7 +45,7 @@
                 <br>
                 <br>
                 <h4>Please enter the text in the box above</h4>
-                <input type="text" id="CaptchaAnswer" maxlength="6" class="form-control" placeholder="Answer" autocomplete="off" required>
+                <input type="password" id="CaptchaAnswer" maxlength="6" class="form-control" placeholder="Answer" autocomplete="off" required>
                 <input id="puzzleAnswer-submit" class="btn btn-lg btn-primary btn-block" type="submit"></input>
             </form>
             
